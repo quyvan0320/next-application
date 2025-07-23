@@ -1,22 +1,21 @@
 import { products } from "../../utils/products";
-import truncateText from "../../utils/truncateText";
 import Container from "./components/Container";
 import HomeBanner from "./components/HomeBanner";
+import ProductCart from "./components/products/ProductCart";
 
 export default function Home() {
   return (
-    <div className="py-4">
+    <div className="pt-4 pb-8">
       <Container>
-        <div>
+        <div className="mb-8">
           <HomeBanner />
         </div>
-        <div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
           {products.map((product: any) => {
-            return <div>{truncateText(product.name)}</div>;
+            return <ProductCart data={product} key={product.name} />;
           })}
         </div>
       </Container>
     </div>
   );
 }
-
